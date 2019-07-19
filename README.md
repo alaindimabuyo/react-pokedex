@@ -1,6 +1,6 @@
 ## Project title
 
-Instagram Showcase
+Pokedex
 
 ### Built with
 
