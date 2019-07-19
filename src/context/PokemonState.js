@@ -2,7 +2,16 @@ import React, { useReducer } from "react";
 import PokemonContext from "./PokemonContext";
 import PokemonReducer from "./PokemonReducer";
 import axios from "axios";
-import { GET_POKEMON, GET_CURRENT_POKEMON, CLEAR_STATE, GET_ITEMS, SET_LOADING } from "./types";
+
+import {
+  GET_POKEMON,
+  GET_CURRENT_POKEMON,
+  CLEAR_STATE,
+  GET_ITEMS,
+  SET_LOADING,
+  GET_CURRENT_ITEM,
+  CLEAR_ITEM
+} from "./types";
 
 const PokemonState = props => {
   const initialState = {
@@ -17,6 +26,9 @@ const PokemonState = props => {
 
   const clearState = () => {
     dispatch({ type: CLEAR_STATE });
+  };
+  const clearItem = () => {
+    dispatch({ type: CLEAR_ITEM });
   };
   const setLoading = () => {
     dispatch({ type: SET_LOADING });
@@ -40,6 +52,12 @@ const PokemonState = props => {
     const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
 
     dispatch({ type: GET_CURRENT_POKEMON, payload: res.data });
+  };
+  const getCurrentItem = async id => {
+    setLoading();
+    const res = await axios.get(`https://pokeapi.co/api/v2/item/${id}`);
+
+    dispatch({ type: GET_CURRENT_ITEM, payload: res.data });
   };
 
   const getValue = (currentKey, into, target) => {
@@ -68,6 +86,7 @@ const PokemonState = props => {
       value={{
         getPokemon,
         getCurrentPokemon,
+        getCurrentItem,
         getItems,
         pokemons: state.pokemons,
         pokemon: state.pokemon,
@@ -75,6 +94,7 @@ const PokemonState = props => {
         items: state.items,
         item: state.item,
         clearState,
+        clearItem,
         loading: state.loading
       }}
     >

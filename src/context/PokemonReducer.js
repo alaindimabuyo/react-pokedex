@@ -1,4 +1,12 @@
-import { GET_POKEMON, GET_CURRENT_POKEMON, CLEAR_STATE, GET_ITEMS, SET_LOADING } from "./types";
+import {
+  GET_POKEMON,
+  GET_CURRENT_POKEMON,
+  CLEAR_STATE,
+  GET_ITEMS,
+  SET_LOADING,
+  GET_CURRENT_ITEM,
+  CLEAR_ITEM
+} from "./types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -20,10 +28,22 @@ export default (state, action) => {
         pokemon: action.payload,
         loading: false
       };
+    case GET_CURRENT_ITEM:
+      return {
+        ...state,
+        item: action.payload,
+        loading: false
+      };
     case CLEAR_STATE:
       return {
         ...state,
-        pokemon: {}
+        pokemon: {},
+        item: {}
+      };
+    case CLEAR_ITEM:
+      return {
+        ...state,
+        item: {}
       };
     case SET_LOADING:
       return {

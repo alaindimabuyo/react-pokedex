@@ -7,6 +7,7 @@ import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CurrentPokemon from "./components/pokemon/CurrentPokemon";
+import CurrentItem from "./components/Items/CurrentItem";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route exact path='/items' component={Items} />
             <Route exact path='/about' component={About} />
             <Route exact path='/pokemon/:id' component={CurrentPokemon} />
+            <Route exact path='/items/:id' component={CurrentItem} />
           </Switch>
         </div>
       </Router>

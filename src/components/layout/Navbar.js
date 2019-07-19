@@ -19,7 +19,9 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to='/items'>Items</Link>
+          <Link onClick={clearState} to='/items'>
+            Items
+          </Link>
         </li>
         <li>
           <Link to='/about'>About</Link>

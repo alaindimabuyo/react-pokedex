@@ -42,8 +42,6 @@ const ItemEntries = () => {
     <Fragment>
       <div className='container '>
         <CenterDiv className='row'>
-          <input className='form-control' type='text' placeholder='Search for Items' />
-
           <div className='grid-4'>
             {currentItems.map(name => (
               <div className='card' key={name.url}>
